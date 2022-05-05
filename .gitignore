@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,sublimetext,django
 
 ##My stuff
-.dave
+*.dave
 
 ### Django ###
 *.log
