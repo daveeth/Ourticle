@@ -12,12 +12,12 @@
             {{ article.body }}
         </div>
         <div class="card-footer text-muted">
+            <a class="btn btn-warning" href="{% url 'comments' article.id %}">Comments</a>
             {% if user.is_authenticated %}
-                <a class="btn btn-warning" href="{% url 'comments' article.id %}">Comments</a>
-            {% endif %}
-            {% if user.username == article.author.username %}
-                <a class="btn btn-warning" href="{% url 'article_update' article.id %}">Edit</a> 
-                <a class="btn btn-danger" href="{% url 'article_delete' article.id %}">Delete</a>
+                {% if user.username == article.author.username %}
+                    <a class="btn btn-warning" href="{% url 'article_update' article.id %}">Edit</a> 
+                    <a class="btn btn-danger" href="{% url 'article_delete' article.id %}">Delete</a>
+                {% endif %}
             {% endif %}
             
         </div>
