@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-dark text-light">
+        <h3 class="font-weight-bold">{{ article.title }}</h3>
+        <p class="text-muted">by {{ article.author }} |
+        {{ article.date }}</p>
+    </div>
+    <div class="card-body">
+        {{ article.body }}
+    </div>
+    <div class="card-footer">
+        {% if comments.count == 0 %}
+            <h3>No comments for this article yet!!!</h3>
+            <p>However, it won't be empty after you submit the first comment!</p>
+        {% else %}
+            {% for comment in comments %}    
+                <div style="border: 2px solid green; border-radius: 5px; margin: 5px"> 
+                    <div class="row" style="margin:12px">
+                        <div class="col-2">
+                            {{ comment.author }}
+                        </div>
+                        <div class="col-10">
+                            {{comment.text}}
+                        </div>
+                    </div> 
+                    
+                    <p class="text-muted">{{comment.created}}</p>  
+                </div>       
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        <a class="btn btn-info" href="{% url 'home' %}"> Go Home </a>
+    </div>
+</div>
+<br />
+{% endblock content %}
